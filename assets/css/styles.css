@@ -136,19 +136,26 @@ a:hover { text-decoration: underline; }
 /* Outreach maps */
 .outreach { border: 1px solid var(--line); border-radius: 1rem; background: var(--card); box-shadow: var(--shadow); padding: 1rem; }
 .outreach-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.map-tools { display: inline-flex; gap: .6rem; align-items: center; }
 .map-tabs { display: inline-flex; gap: .5rem; border: 1px solid var(--line); border-radius: .6rem; overflow: hidden; }
 .map-tabs button { background: #fff; border: 0; padding: .5rem .8rem; color: var(--muted); }
 .map-tabs button[aria-selected="true"] { background: var(--brand); color: #fff; }
+.map-tools #map-edit-toggle { border: 1px solid var(--line); background: #fff; color: var(--ink); padding: .45rem .7rem; border-radius: .5rem; }
+.map-tools #map-edit-toggle[aria-pressed="true"] { background: var(--brand); color: #fff; border-color: var(--brand); }
 .map-stage { position: relative; margin-top: .75rem; border: 1px dashed var(--line); border-radius: .75rem; padding: .75rem; background: linear-gradient(180deg, #ffffff, #fafafa); min-height: 340px; }
 .map { position: absolute; inset: .75rem; display: none; }
 .map.active { display: block; }
 .map svg { width: 100%; height: 100%; }
 .map .hub { fill: var(--brand); }
-.map .node { fill: var(--accent); }
-.map .link { stroke: var(--brand); stroke-width: 2; fill: none; stroke-linecap: round; stroke-dasharray: 4 6; animation: dash 2.5s linear infinite; }
-.map .pulse { fill: var(--brand); animation: hubpulse 2.2s ease-in-out infinite; }
-@keyframes dash { to { stroke-dashoffset: -20; } }
-@keyframes hubpulse { 50% { opacity: .6; transform: scale(1.08); } }
+.map .node { fill: var(--brand-ink); cursor: pointer; }
+.map .link { stroke: var(--brand); stroke-width: 2; fill: none; stroke-linecap: round; stroke-dasharray: 6 10; animation: dash 2.8s linear infinite; }
+.map .link.alt { animation-direction: reverse; }
+.map .arrow { fill: var(--brand); }
+@keyframes dash { to { stroke-dashoffset: -32; } }
+.coord-hint { position: absolute; right: 1rem; top: 1rem; background: rgba(255,255,255,.9); border: 1px solid var(--line); border-radius: .5rem; padding: .35rem .6rem; font-size: .85rem; color: var(--muted); }
+.map-popup { position: absolute; background: #fff; border: 1px solid var(--line); border-radius: .5rem; box-shadow: var(--shadow); padding: .6rem .7rem; max-width: 260px; z-index: 3; }
+.map-popup h4 { margin: 0 0 .25rem; font-size: .95rem; color: var(--brand); }
+.map-popup p { margin: 0; font-size: .9rem; color: var(--muted); }
 
 /* Partners */
 .logo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }

@@ -218,58 +218,33 @@
           <div class="outreach">
             <div class="outreach-head">
               <h3>Geographical Outreach</h3>
-              <div class="map-tabs" role="tablist">
-                <button role="tab" id="tab-local" aria-selected="true" aria-controls="panel-local">Lebanon</button>
-                <button role="tab" id="tab-global" aria-selected="false" aria-controls="panel-global">Global</button>
+              <div class="map-tools">
+                <div class="map-tabs" role="tablist">
+                  <button role="tab" id="tab-local" aria-selected="true" aria-controls="panel-local">Lebanon</button>
+                  <button role="tab" id="tab-global" aria-selected="false" aria-controls="panel-global">Global</button>
+                </div>
+                <button id="map-edit-toggle" aria-pressed="false" title="Click to enable coordinate helper">Edit Points</button>
               </div>
             </div>
             <div class="map-stage">
+              <div id="map-popup" class="map-popup" hidden></div>
+              <div class="coord-hint" id="coord-hint">Click the map to get % coordinates</div>
               <!-- Local map -->
               <div class="map active" id="panel-local" role="tabpanel" aria-labelledby="tab-local">
-                <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Abstract Lebanon silhouette (stylized polygon) -->
-                  <path d="M420,60 L460,110 L450,150 L480,190 L470,230 L500,270 L490,300 L450,330 L420,310 L390,280 L360,250 L370,220 L350,190 L360,160 L380,130 L400,90 Z" fill="#f8f8f8" stroke="#ddd"/>
-                  <!-- Hub: Beirut/AUB approx -->
-                  <circle class="hub pulse" cx="430" cy="280" r="6"/>
-                  <!-- Governorate nodes (approx positions) -->
-                  <circle class="node" cx="430" cy="280" r="4"/>
-                  <circle class="node" cx="450" cy="230" r="4"/>
-                  <circle class="node" cx="400" cy="240" r="4"/>
-                  <circle class="node" cx="430" cy="180" r="4"/>
-                  <circle class="node" cx="470" cy="200" r="4"/>
-                  <circle class="node" cx="445" cy="320" r="4"/>
-                  <!-- Animated links -->
-                  <path class="link" d="M430,280 C440,250 445,240 450,230"/>
-                  <path class="link" d="M430,280 C415,260 405,250 400,240"/>
-                  <path class="link" d="M430,280 C430,240 430,210 430,180"/>
-                  <path class="link" d="M430,280 C450,260 460,230 470,200"/>
-                  <path class="link" d="M430,280 C435,300 440,310 445,320"/>
+                <svg id="map-local" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                  <g data-map-bg>
+                    <image href="assets/maps/lebanon.svg" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" />
+                  </g>
+                  <g data-map-layer></g>
                 </svg>
               </div>
               <!-- Global map -->
               <div class="map" id="panel-global" role="tabpanel" aria-labelledby="tab-global">
-                <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Abstract world landmasses (minimal silhouettes) -->
-                  <rect x="0" y="0" width="1000" height="500" fill="#ffffff"/>
-                  <path d="M120,140 l180,-20 60,40 -80,50 -120,0 z" fill="#f8f8f8" stroke="#eee"/> <!-- NA -->
-                  <path d="M420,160 l120,-20 80,10 40,30 -80,50 -140,0 z" fill="#f8f8f8" stroke="#eee"/> <!-- Europe -->
-                  <path d="M580,210 l160,10 60,60 -40,70 -150,10 -80,-50 10,-60 z" fill="#f8f8f8" stroke="#eee"/> <!-- MENA/Asia -->
-                  <path d="M160,320 l140,10 40,40 -30,50 -150,-10 -40,-40 z" fill="#f8f8f8" stroke="#eee"/> <!-- SA -->
-                  <path d="M760,360 l100,0 50,40 -40,30 -120,0 z" fill="#f8f8f8" stroke="#eee"/> <!-- Australia -->
-                  <!-- Hub: Lebanon approx -->
-                  <circle class="hub pulse" cx="560" cy="240" r="7"/>
-                  <!-- Partner nodes (abstract regions) -->
-                  <circle class="node" cx="460" cy="180" r="5"/> <!-- Europe -->
-                  <circle class="node" cx="320" cy="150" r="5"/> <!-- NA -->
-                  <circle class="node" cx="780" cy="280" r="5"/> <!-- Asia -->
-                  <circle class="node" cx="840" cy="420" r="5"/> <!-- Australia -->
-                  <circle class="node" cx="240" cy="360" r="5"/> <!-- SA -->
-                  <!-- Animated arcs from Lebanon to partners -->
-                  <path class="link" d="M560,240 C520,210 490,195 460,180"/>
-                  <path class="link" d="M560,240 C500,190 420,170 320,150"/>
-                  <path class="link" d="M560,240 C640,250 720,260 780,280"/>
-                  <path class="link" d="M560,240 C650,310 760,370 840,420"/>
-                  <path class="link" d="M560,240 C460,300 340,340 240,360"/>
+                <svg id="map-global" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                  <g data-map-bg>
+                    <image href="assets/maps/world.svg" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" />
+                  </g>
+                  <g data-map-layer></g>
                 </svg>
               </div>
             </div>
