@@ -21,6 +21,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
 
+    <!-- Leaflet CSS for map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
@@ -39,6 +42,7 @@
             <li><a href="#keepers">Keepers of the Land</a></li>
             <li><a href="#timeline">Timeline</a></li>
             <li><a href="#impact">Impact</a></li>
+            <li><a href="#goals">Goals</a></li>
             <li><a href="#partners">Partners</a></li>
             <li><a href="#resources">Resources</a></li>
           </ul>
@@ -88,9 +92,9 @@
             <article class="card" tabindex="0">
               <h3>Core Values</h3>
               <ul class="pill-list">
-                <li>Keepers of the Land</li>
-                <li>Local Roots, Global Wings</li>
-                <li>Innovation under Uncertainty</li>
+                <li>Keepers of The Land: Stewards of the Heritage</li>
+                <li>Local Roots, Global Wings: Community Centered, Global Player</li>
+                <li>Exploring Solutions Defying Uncertainties: Innovation for Sustainable Futures</li>
                 <li>Participation & Inclusion</li>
                 <li>Evidence & Integrity</li>
               </ul>
@@ -105,7 +109,7 @@
       </section>
 
       <!-- ESDU AT WORK: 6 SLIDES CAROUSEL -->
-      <section id="work" class="section work bg-gray" aria-label="ESDU at Work carousel">
+      <section id="work" class="section work bg-amber" aria-label="ESDU at Work carousel">
         <div class="container">
           <header class="section-head">
             <h2>ESDU at Work</h2>
@@ -116,27 +120,27 @@
               <div class="carousel-track">
               <article class="slide">
                 <h3>Education & Training</h3>
-                <p>Capacity building, CEC courses, school programs, and online learning (KariaNet) that grow skills and leadership.</p>
+                <p>Capacity building through CEC courses, school programs, and KariaNet online platform. Training 5,000+ development actors with focus on agricultural management, evaluation practices, and participatory development across MENA region.</p>
               </article>
               <article class="slide">
                 <h3>R&D Projects</h3>
-                <p>Applied research linking field insights to development: circular economy, AI/digital, climate‑smart design.</p>
+                <p>Applied research bridging field and lab: circular economy, AI/digital literacy, climate‑smart agriculture. Current projects include SUROFLY, Med4Waste, CORUSUS, and innovative feed technologies for sustainable farming.</p>
               </article>
               <article class="slide">
                 <h3>Community Outreach</h3>
-                <p>People‑centered approaches supporting farmers, women, and youth to build resilient livelihoods.</p>
+                <p>People‑centered approaches empowering smallholder farmers, women-led MSMEs, and youth. Supporting 275+ farmers, 80+ cooperatives, and vulnerable communities through capacity building and market linkages.</p>
               </article>
               <article class="slide">
                 <h3>Communication & Dissemination</h3>
-                <p>Knowledge sharing and visibility through publications, events, and regional networks.</p>
+                <p>Knowledge management through conferences, peer‑reviewed publications, FAO guidelines, and regional networks (EvalMENA, KariaNet, RUAF MENA). Hosting landmark workshops with parliamentarians and ministers.</p>
               </article>
               <article class="slide">
                 <h3>Strategic Partnerships</h3>
-                <p>Institutional and grassroots coalitions for transformative change and policy engagement.</p>
+                <p>Collaborating with IDRC, IFAD, FAO, WFP, AFESD, UNDP, and regional institutions. Sister organizations include Food Heritage Foundation, Ardı Ardak, Eco‑Khalleh, and Animal Encounter for transformative change.</p>
               </article>
               <article class="slide">
                 <h3>Multistakeholder Initiatives</h3>
-                <p>Keepers of the Land, Urban Oasis, and living labs bridging academia and practice.</p>
+                <p>Flagship programs: Keepers of the Land, Urban Oasis engagement center, DAWWERA circular economy network, ITHMAR heritage initiative, and 10+ living labs demonstrating sustainable solutions.</p>
               </article>
               </div>
             </div>
@@ -150,13 +154,12 @@
       </section>
 
       <!-- KEEPERS OF THE LAND + AUB LINKS -->
-      <section id="keepers" class="section keepers" aria-label="Keepers of the Land and AUB Links">
+      <section id="keepers" class="section keepers bg-green" aria-label="Keepers of the Land and AUB Links">
         <div class="container grid-keepers">
           <div class="kotl-card">
             <h2>Keepers of the Land</h2>
             <p>
-              ESDU’s flagship initiative connecting small producers to markets, celebrating local foods,
-              and sustaining rural livelihoods.
+              A Keeper of the Land is anyone dedicated to preserving and protecting our heritage, agriculture, and natural resources for future generations. ESDU's flagship initiative connects small producers to markets, supports land stewards with resources and recognition, and sustains rural livelihoods through the Keepers of the Land Research Fund launched in 2015.
             </p>
             <a class="btn primary" href="https://example.org/keepers" target="_blank" rel="noopener">Explore the Initiative</a>
           </div>
@@ -168,8 +171,37 @@
               <li><a href="https://www.aub.edu.lb" target="_blank" rel="noopener">Agroecology</a></li>
               <li><a href="https://www.aub.edu.lb" target="_blank" rel="noopener">Social Protection</a></li>
               <li><a href="https://www.aub.edu.lb" target="_blank" rel="noopener">Value Chains</a></li>
+              <li><a href="https://www.aub.edu.lb" target="_blank" rel="noopener">Climate Smart Agriculture</a></li>
+              <li><a href="https://www.aub.edu.lb" target="_blank" rel="noopener">Circular Economy</a></li>
+              <li><a href="https://www.aub.edu.lb" target="_blank" rel="noopener">Women Empowerment</a></li>
             </ul>
           </aside>
+        </div>
+        
+        <div class="container" style="margin-top: 2rem;">
+          <h3 style="text-align: center; margin-bottom: 1.5rem;">Cross-Cutting Initiatives</h3>
+          <div class="initiatives-grid">
+            <div class="initiative-item">
+              <h4>DAWWERA</h4>
+              <p>Water-energy-waste nexus sustainability network integrating circular economy principles for rural empowerment.</p>
+            </div>
+            <div class="initiative-item">
+              <h4>ARDI ARDAK</h4>
+              <p>Community-supported national food security initiative connecting producers and consumers through solidarity networks.</p>
+            </div>
+            <div class="initiative-item">
+              <h4>ITHMAR</h4>
+              <p>Heritage preservation initiative reviving traditional local food systems for cultural continuity and food sovereignty.</p>
+            </div>
+            <div class="initiative-item">
+              <h4>Talent</h4>
+              <p>Incubation program supporting entrepreneurs from idea to business in sustainable food and agriculture sectors.</p>
+            </div>
+            <div class="initiative-item">
+              <h4>AI Impact</h4>
+              <p>Digital transformation hub integrating artificial intelligence for agricultural innovation and climate resilience.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -178,7 +210,7 @@
         <div class="container">
           <header class="section-head">
             <h2>Timeline</h2>
-            <p>Milestones and momentum from 1999 to 2025.</p>
+            <p>25 years of innovation, impact, and transformation from grassroots research to regional leadership.</p>
           </header>
           <div class="timeline-track" data-timeline>
             <div class="rail" aria-hidden="true"></div>
@@ -189,7 +221,7 @@
       </section>
 
       <!-- IMPACT & OUTREACH -->
-      <section id="impact" class="section impact bg-gray" aria-label="Impact in Numbers and Outreach">
+      <section id="impact" class="section impact bg-rose" aria-label="Impact in Numbers and Outreach">
         <div class="container">
           <header class="section-head">
             <h2>Impact & Outreach</h2>
@@ -198,20 +230,36 @@
 
           <div class="kpi-grid" role="list">
             <div class="kpi" role="listitem">
-              <div class="kpi-value" data-count="5000">0</div>
-              <div class="kpi-label">Development Actors Trained</div>
+              <div class="kpi-value" data-count="50">0</div>
+              <div class="kpi-label">Farmers Beneficiaries</div>
+            </div>
+            <div class="kpi" role="listitem">
+              <div class="kpi-value" data-count="8200">0</div>
+              <div class="kpi-label">Platters to IDPs</div>
             </div>
             <div class="kpi" role="listitem">
               <div class="kpi-value" data-count="25">0</div>
-              <div class="kpi-label">Years of Impact</div>
+              <div class="kpi-label">MSMEs Assisted</div>
             </div>
             <div class="kpi" role="listitem">
-              <div class="kpi-value" data-count="6">0</div>
-              <div class="kpi-label">Governorates Covered (LB)</div>
+              <div class="kpi-value" data-count="275">0</div>
+              <div class="kpi-label">Farmers Supported</div>
+            </div>
+            <div class="kpi" role="listitem">
+              <div class="kpi-value" data-count="10">0</div>
+              <div class="kpi-label">Demo-Plots / Living Labs</div>
+            </div>
+            <div class="kpi" role="listitem">
+              <div class="kpi-value" data-count="14">0</div>
+              <div class="kpi-label">Student Employment</div>
             </div>
             <div class="kpi" role="listitem">
               <div class="kpi-value" data-count="4">0</div>
-              <div class="kpi-label">Regional Networks Hosted</div>
+              <div class="kpi-label">Publications</div>
+            </div>
+            <div class="kpi" role="listitem">
+              <div class="kpi-value" data-count="5000">0</div>
+              <div class="kpi-label">Total Actors Trained</div>
             </div>
           </div>
 
@@ -220,34 +268,46 @@
               <h3>Geographical Outreach</h3>
               <div class="map-tools">
                 <div class="map-tabs" role="tablist">
-                  <button role="tab" id="tab-local" aria-selected="true" aria-controls="panel-local">Lebanon</button>
-                  <button role="tab" id="tab-global" aria-selected="false" aria-controls="panel-global">Global</button>
+                  <button role="tab" id="tab-local" aria-selected="true">Lebanon</button>
+                  <button role="tab" id="tab-global" aria-selected="false">Global</button>
                 </div>
-                <button id="map-edit-toggle" aria-pressed="false" title="Click to enable coordinate helper">Edit Points</button>
               </div>
             </div>
             <div class="map-stage">
-              <div id="map-popup" class="map-popup" hidden></div>
-              <div class="coord-hint" id="coord-hint">Click the map to get % coordinates</div>
-              <!-- Local map -->
-              <div class="map active" id="panel-local" role="tabpanel" aria-labelledby="tab-local">
-                <svg id="map-local" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-                  <g data-map-bg>
-                    <image href="assets/maps/lebanon.svg" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" />
-                  </g>
-                  <g data-map-layer></g>
-                </svg>
-              </div>
-              <!-- Global map -->
-              <div class="map" id="panel-global" role="tabpanel" aria-labelledby="tab-global">
-                <svg id="map-global" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-                  <g data-map-bg>
-                    <image href="assets/maps/world.svg" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" />
-                  </g>
-                  <g data-map-layer></g>
-                </svg>
-              </div>
+              <div id="esdu-map-container"></div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STRATEGIC GOALS -->
+      <section id="goals" class="section goals bg-amber" aria-label="Strategic Goals 2025-2030">
+        <div class="container">
+          <header class="section-head">
+            <h2>Strategic Goals 2025–2030</h2>
+            <p>Five interconnected pillars guiding ESDU's next chapter.</p>
+          </header>
+          <div class="goals-grid">
+            <article class="goal-card">
+              <h3>Innovative ESDU</h3>
+              <p>Circular economy, AI/digitalization, design for sustainability, food systems transformation, and heritage preservation through cutting-edge research and development projects.</p>
+            </article>
+            <article class="goal-card">
+              <h3>Bright ESDU</h3>
+              <p>Education for sustainable food systems through online platforms, CEC courses, school programs, increased scholarships, and expanded student recruitment across the region.</p>
+            </article>
+            <article class="goal-card">
+              <h3>Engaged ESDU</h3>
+              <p>Community engagement, strategic partnerships, network approaches, and the Urban Oasis as a digital technology showcase for transformative change.</p>
+            </article>
+            <article class="goal-card">
+              <h3>Smart ESDU</h3>
+              <p>AI & digital literacy, collaborative innovation, online presence, digital operations, and regional/international partnerships driving the digital age transition.</p>
+            </article>
+            <article class="goal-card">
+              <h3>Sustainable ESDU</h3>
+              <p>Team retention, economic growth, institutional support, innovative fundraising, diversified income streams, and streamlined collaboration with sister organizations.</p>
+            </article>
           </div>
         </div>
       </section>
@@ -257,24 +317,71 @@
         <div class="container">
           <header class="section-head">
             <h2>Partners & Donors</h2>
-            <p>Enduring collaborations that power sustainable development.</p>
+            <p>Enduring collaborations that power sustainable development across Lebanon and MENA.</p>
           </header>
-          <div class="logo-grid">
-            <!-- Placeholder tiles; swap with real logos when ready -->
-            <div class="logo-tile"><span>Partner Logo</span></div>
-            <div class="logo-tile"><span>Partner Logo</span></div>
-            <div class="logo-tile"><span>Donor Logo</span></div>
-            <div class="logo-tile"><span>Donor Logo</span></div>
-            <div class="logo-tile"><span>Partner Logo</span></div>
-            <div class="logo-tile"><span>Partner Logo</span></div>
-            <div class="logo-tile"><span>Donor Logo</span></div>
-            <div class="logo-tile"><span>Donor Logo</span></div>
+          
+          <div class="partners-categories">
+            <div class="partner-category">
+              <h4>International Donors</h4>
+              <div class="logo-grid">
+                <div class="logo-tile"><a href="https://www.fao.org" target="_blank" rel="noopener"><span>FAO</span></a></div>
+                <div class="logo-tile"><a href="https://www.ifad.org" target="_blank" rel="noopener"><span>IFAD</span></a></div>
+                <div class="logo-tile"><a href="https://www.idrc.ca" target="_blank" rel="noopener"><span>IDRC</span></a></div>
+                <div class="logo-tile"><a href="https://www.wfp.org" target="_blank" rel="noopener"><span>WFP</span></a></div>
+                <div class="logo-tile"><a href="https://www.undp.org" target="_blank" rel="noopener"><span>UNDP</span></a></div>
+                <div class="logo-tile"><a href="https://www.usaid.gov" target="_blank" rel="noopener"><span>USAID</span></a></div>
+                <div class="logo-tile"><a href="https://www.afesd.org" target="_blank" rel="noopener"><span>AFESD</span></a></div>
+                <div class="logo-tile"><a href="https://prima-med.org" target="_blank" rel="noopener"><span>PRIMA</span></a></div>
+                <div class="logo-tile"><a href="https://interregnextmed.eu" target="_blank" rel="noopener"><span>Interreg NEXT MED</span></a></div>
+                <div class="logo-tile"><a href="https://www.drosos.org" target="_blank" rel="noopener"><span>DROSOS</span></a></div>
+                <div class="logo-tile"><a href="https://www.porticus.com" target="_blank" rel="noopener"><span>Porticus</span></a></div>
+                <div class="logo-tile"><a href="https://neareast.org" target="_blank" rel="noopener"><span>NEF</span></a></div>
+                <div class="logo-tile"><a href="https://www.state.gov/population-refugees-and-migration" target="_blank" rel="noopener"><span>BPRM</span></a></div>
+                <div class="logo-tile"><a href="https://www.concern.net" target="_blank" rel="noopener"><span>Concern Worldwide</span></a></div>
+                <div class="logo-tile"><a href="https://www.khalifaaward.ae" target="_blank" rel="noopener"><span>Khalifa Award</span></a></div>
+              </div>
+            </div>
+            
+            <div class="partner-category">
+              <h4>AUB & Regional Partners</h4>
+              <div class="logo-grid">
+                <div class="logo-tile"><a href="https://www.ruaf.org" target="_blank" rel="noopener"><span>RUAF Foundation</span></a></div>
+                <div class="logo-tile"><a href="https://www.evalmena.org" target="_blank" rel="noopener"><span>EvalMENA</span></a></div>
+                <div class="logo-tile"><a href="https://www.karianet.org" target="_blank" rel="noopener"><span>KariaNet</span></a></div>
+                <div class="logo-tile"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>EcoMENA</span></a></div>
+                <div class="logo-tile"><a href="https://www.aub.edu.lb/ncc" target="_blank" rel="noopener"><span>Nature Conservation Center</span></a></div>
+                <div class="logo-tile"><a href="https://www.aub.edu.lb/registrar/catalog/174" target="_blank" rel="noopener"><span>LDEM-AUB</span></a></div>
+                <div class="logo-tile"><a href="https://www.aub.edu.lb/ifi" target="_blank" rel="noopener"><span>IFI-AUB</span></a></div>
+                <div class="logo-tile"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>Neighborhood Initiative</span></a></div>
+                <div class="logo-tile"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>AUB President's Club</span></a></div>
+              </div>
+            </div>
+            
+            <div class="partner-category">
+              <h4>Local & Regional NGOs</h4>
+              <div class="logo-grid">
+                <div class="logo-tile"><a href="https://www.llwb.org" target="_blank" rel="noopener"><span>LLWB</span></a></div>
+                <div class="logo-tile"><a href="https://www.farahfoundation.org" target="_blank" rel="noopener"><span>FARAH Foundation</span></a></div>
+                <div class="logo-tile"><a href="https://www.agriculture.gov.lb" target="_blank" rel="noopener"><span>Lebanese Ministries</span></a></div>
+                <div class="logo-tile"><a href="https://www.cooperationwithoutborders.com" target="_blank" rel="noopener"><span>Cooperation Without Borders</span></a></div>
+              </div>
+            </div>
+            
+            <div class="partner-category">
+              <h4>Sister Organizations</h4>
+              <div class="logo-grid">
+                <div class="logo-tile"><a href="https://food-heritage.org" target="_blank" rel="noopener"><span>Food Heritage Foundation</span></a></div>
+                <div class="logo-tile"><a href="https://www.ardiardak.org" target="_blank" rel="noopener"><span>Ardi Ardak</span></a></div>
+                <div class="logo-tile"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>Eco-Khalleh</span></a></div>
+                <div class="logo-tile"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>Animal Encounter</span></a></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- RESOURCES / FILES -->
-      <section id="resources" class="section resources bg-gray" aria-label="Resources and Files">
+      <section id="resources" class="section resources bg-green" aria-label="Resources and Files">
         <div class="container">
           <header class="section-head">
             <h2>Resources</h2>
@@ -312,7 +419,7 @@
               </a>
             </li>
           </ul>
-          <p class="hint">We will surface key highlights, images, and logos from these files once extraction is complete.</p>
+          <p class="hint">Download ESDU's latest strategy, portfolios, and presentations to dive deeper into our mission and impact.</p>
         </div>
       </section>
     </main>
@@ -328,6 +435,7 @@
           <li><a href="#work">ESDU at Work</a></li>
           <li><a href="#timeline">Timeline</a></li>
           <li><a href="#impact">Impact</a></li>
+          <li><a href="#goals">Goals</a></li>
           <li><a href="#partners">Partners</a></li>
           <li><a href="#resources">Resources</a></li>
         </ul>
@@ -350,6 +458,12 @@
     }
     </script>
 
+    <!-- Leaflet JS for map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+    
+    <!-- ESDU Locations Data -->
+    <script src="assets/data/esdu_locations.js"></script>
+    
     <script src="assets/js/main.js"></script>
   </body>
   </html>
