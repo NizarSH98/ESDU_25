@@ -331,14 +331,87 @@ a:hover { text-decoration: underline; }
 .partners-categories { display: grid; gap: 2rem; }
 .partner-category h4 { margin: 0 0 1rem; font-size: 1.1rem; color: var(--brand-ink); font-weight: 600; }
 .logo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-.logo-tile { display: grid; place-items: center; height: 88px; border-radius: .75rem; border: 1px solid var(--line); background: linear-gradient(135deg, #fff, var(--tint-amber)); filter: grayscale(100%); transition: all .2s; box-shadow: var(--shadow); overflow: hidden; }
+.logo-tile { 
+  display: grid; 
+  place-items: center; 
+  height: 88px; 
+  border-radius: .75rem; 
+  border: 1px solid var(--line); 
+  background: linear-gradient(135deg, #fff, var(--tint-amber)); 
+  filter: grayscale(100%); 
+  transition: all .2s; 
+  box-shadow: var(--shadow); 
+  overflow: hidden;
+  position: relative;
+  animation: subtleGlow 6s ease-in-out infinite;
+}
+.logo-tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 8s infinite;
+}
 .logo-tile a { display: grid; place-items: center; width: 100%; height: 100%; text-decoration: none; }
-.logo-tile span { font-size: .85rem; font-weight: 600; color: var(--muted); text-align: center; padding: .5rem; }
+.logo-tile span { font-size: .85rem; font-weight: 600; color: var(--muted); text-align: center; padding: .5rem; transition: all .2s; }
 .logo-tile img { max-width: 80%; max-height: 70%; object-fit: contain; }
-.logo-tile:hover { filter: grayscale(0%); transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0,0,0,.12); background: linear-gradient(135deg, #fff, var(--brand-soft)); cursor: pointer; }
-.logo-tile:hover span { color: var(--brand-ink); }
+.logo-tile:hover { 
+  filter: grayscale(0%); 
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 26px rgba(0,0,0,.12), 0 0 0 3px rgba(132,1,50,0.1);
+  background: linear-gradient(135deg, #fff, var(--brand-soft)); 
+  cursor: pointer; 
+  animation: pulseTile 2s ease-in-out infinite;
+}
+.logo-tile:hover::before { animation: none; }
+.logo-tile:hover span { color: var(--brand-ink); transform: scale(1.05); }
 @media (max-width: 840px) { .logo-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .logo-grid { grid-template-columns: 1fr; } }
+
+/* Staggered animation delays for logo tiles */
+.logo-grid .logo-tile:nth-child(1) { animation-delay: 0s; }
+.logo-grid .logo-tile:nth-child(2) { animation-delay: 0.3s; }
+.logo-grid .logo-tile:nth-child(3) { animation-delay: 0.6s; }
+.logo-grid .logo-tile:nth-child(4) { animation-delay: 0.9s; }
+.logo-grid .logo-tile:nth-child(5) { animation-delay: 1.2s; }
+.logo-grid .logo-tile:nth-child(6) { animation-delay: 1.5s; }
+.logo-grid .logo-tile:nth-child(7) { animation-delay: 1.8s; }
+.logo-grid .logo-tile:nth-child(8) { animation-delay: 2.1s; }
+.logo-grid .logo-tile:nth-child(9) { animation-delay: 2.4s; }
+.logo-grid .logo-tile:nth-child(10) { animation-delay: 2.7s; }
+.logo-grid .logo-tile:nth-child(11) { animation-delay: 3s; }
+.logo-grid .logo-tile:nth-child(12) { animation-delay: 3.3s; }
+.logo-grid .logo-tile:nth-child(13) { animation-delay: 3.6s; }
+.logo-grid .logo-tile:nth-child(14) { animation-delay: 3.9s; }
+.logo-grid .logo-tile:nth-child(15) { animation-delay: 4.2s; }
+.logo-grid .logo-tile:nth-child(16) { animation-delay: 4.5s; }
+
+/* Logo tile animations */
+@keyframes subtleGlow {
+  0%, 100% { 
+    box-shadow: var(--shadow);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 6px 20px rgba(132,1,50,.08), var(--shadow);
+    transform: scale(1.01);
+  }
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+@keyframes pulseTile {
+  0%, 100% { 
+    box-shadow: 0 12px 26px rgba(0,0,0,.12), 0 0 0 3px rgba(132,1,50,0.1);
+  }
+  50% { 
+    box-shadow: 0 12px 26px rgba(0,0,0,.2), 0 0 0 3px rgba(132,1,50,0.2);
+  }
+}
 
 /* Resources */
 .file-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
