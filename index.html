@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -32,7 +33,15 @@
       <div class="container header-inner">
         <a href="#home" class="brand" aria-label="ESDU home">
           <span class="brand-mark" aria-hidden="true">25</span>
-          <span class="brand-text">ESDU</span>
+          <span class="brand-text">
+            <span class="brand-init">ESDU</span>
+            <span class="brand-expanded">
+              <span class="brand-word">Exploring<span class="brand-dots">..</span></span>
+              <span class="brand-word">Solution<span class="brand-dots">....</span></span>
+              <span class="brand-word">Defying<span class="brand-dots">....</span></span>
+              <span class="brand-word">Uncertainties<span class="brand-dots">.</span></span>
+            </span>
+          </span>
         </a>
         <nav class="site-nav" aria-label="Primary">
           <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">Menu</button>
@@ -55,7 +64,27 @@
       <section id="home" class="section hero" aria-label="ESDU Hero">
         <div class="container hero-inner">
           <div class="hero-copy">
-            <h1>25 Years Advancing Sustainable Livelihoods</h1>
+            <div class="hero-brand">
+              <h1 class="hero-esdu">
+                <div class="esdu-line">
+                  <span class="esdu-letter">E</span>
+                  <span class="esdu-text">xploring Sustainable Pathways for Rural Resilience</span>
+                </div>
+                <div class="esdu-line">
+                  <span class="esdu-letter">S</span>
+                  <span class="esdu-text">olutions Through Climate-Smart Agriculture & Innovation</span>
+                </div>
+                <div class="esdu-line">
+                  <span class="esdu-letter">D</span>
+                  <span class="esdu-text">efying Food Insecurity with Community-Led Development</span>
+                </div>
+                <div class="esdu-line">
+                  <span class="esdu-letter">U</span>
+                  <span class="esdu-text">ncertainties Transformed into Opportunities for Growth</span>
+                </div>
+              </h1>
+              <p class="hero-subtitle">25 Years Advancing Sustainable Livelihoods</p>
+            </div>
             <p>
               ESDU champions community-led development, resilient food systems, and inclusive growth—
               bridging academia and the field across Lebanon and the region.
@@ -132,7 +161,7 @@
               </article>
               <article class="slide">
                 <h3>Communication & Dissemination</h3>
-                <p>Knowledge management through conferences, peer‑reviewed publications, FAO guidelines, and regional networks (EvalMENA, KariaNet, RUAF MENA). Hosting landmark workshops with parliamentarians and ministers.</p>
+                <p>Knowledge management through conferences, peer‑reviewed publications, FAO guidelines, and regional networks (EvalMENA, KariaNet). Hosting landmark workshops with parliamentarians and ministers.</p>
               </article>
               <article class="slide">
                 <h3>Strategic Partnerships</h3>
@@ -164,7 +193,7 @@
             <a class="btn primary" href="https://example.org/keepers" target="_blank" rel="noopener">Explore the Initiative</a>
           </div>
           <aside class="aub-links" aria-label="AUB Keywords">
-            <h3>Related to AUB</h3>
+            <h3>Key Topics</h3>
             <ul class="chip-list">
               <li><a href="https://www.aub.edu.lb" target="_blank" rel="noopener">Food Security</a></li>
               <li><a href="https://www.aub.edu.lb" target="_blank" rel="noopener">Rural Development</a></li>
@@ -323,57 +352,126 @@
           <div class="partners-categories">
             <div class="partner-category">
               <h4>International Donors</h4>
-              <div class="logo-grid">
-                <div class="logo-tile"><a href="https://www.fao.org" target="_blank" rel="noopener"><span>FAO</span></a></div>
-                <div class="logo-tile"><a href="https://www.ifad.org" target="_blank" rel="noopener"><span>IFAD</span></a></div>
-                <div class="logo-tile"><a href="https://www.idrc.ca" target="_blank" rel="noopener"><span>IDRC</span></a></div>
-                <div class="logo-tile"><a href="https://www.wfp.org" target="_blank" rel="noopener"><span>WFP</span></a></div>
-                <div class="logo-tile"><a href="https://www.undp.org" target="_blank" rel="noopener"><span>UNDP</span></a></div>
-                <div class="logo-tile"><a href="https://www.usaid.gov" target="_blank" rel="noopener"><span>USAID</span></a></div>
-                <div class="logo-tile"><a href="https://www.afesd.org" target="_blank" rel="noopener"><span>AFESD</span></a></div>
-                <div class="logo-tile"><a href="https://prima-med.org" target="_blank" rel="noopener"><span>PRIMA</span></a></div>
-                <div class="logo-tile"><a href="https://interregnextmed.eu" target="_blank" rel="noopener"><span>Interreg NEXT MED</span></a></div>
-                <div class="logo-tile"><a href="https://www.drosos.org" target="_blank" rel="noopener"><span>DROSOS</span></a></div>
-                <div class="logo-tile"><a href="https://www.porticus.com" target="_blank" rel="noopener"><span>Porticus</span></a></div>
-                <div class="logo-tile"><a href="https://neareast.org" target="_blank" rel="noopener"><span>NEF</span></a></div>
-                <div class="logo-tile"><a href="https://www.state.gov/population-refugees-and-migration" target="_blank" rel="noopener"><span>BPRM</span></a></div>
-                <div class="logo-tile"><a href="https://www.concern.net" target="_blank" rel="noopener"><span>Concern Worldwide</span></a></div>
-                <div class="logo-tile"><a href="https://www.khalifaaward.ae" target="_blank" rel="noopener"><span>Khalifa Award</span></a></div>
+              <div class="donor-tree">
+                <div class="tree-root">
+                  <!-- Level 0: IDRC (1 card) -->
+                  <div class="tree-level tree-level-0">
+                    <div class="tree-node tree-node-primary">
+                      <a href="https://www.idrc.ca" target="_blank" rel="noopener">
+                        <span class="node-label">IDRC</span>
+                        <span class="node-badge">Primary Donor</span>
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <!-- Level 1: 2 cards -->
+                  <div class="tree-level tree-level-1">
+                    <div class="tree-node tree-node-secondary">
+                      <a href="https://www.ifad.org" target="_blank" rel="noopener">
+                        <span class="node-label">IFAD</span>
+                      </a>
+                    </div>
+                    <div class="tree-node tree-node-secondary">
+                      <a href="https://www.fao.org" target="_blank" rel="noopener">
+                        <span class="node-label">FAO</span>
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <!-- Level 2: 3 cards -->
+                  <div class="tree-level tree-level-2">
+                    <div class="tree-node tree-node-secondary">
+                      <a href="https://www.wfp.org" target="_blank" rel="noopener">
+                        <span class="node-label">WFP</span>
+                      </a>
+                    </div>
+                    <div class="tree-node tree-node-secondary">
+                      <a href="https://www.undp.org" target="_blank" rel="noopener">
+                        <span class="node-label">UNDP</span>
+                      </a>
+                    </div>
+                    <div class="tree-node tree-node-secondary">
+                      <a href="https://www.usaid.gov" target="_blank" rel="noopener">
+                        <span class="node-label">USAID</span>
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <!-- Level 3: 5 cards -->
+                  <div class="tree-level tree-level-3">
+                    <div class="tree-node tree-node-tertiary">
+                      <a href="https://www.afesd.org" target="_blank" rel="noopener">
+                        <span class="node-label">AFESD</span>
+                      </a>
+                    </div>
+                    <div class="tree-node tree-node-tertiary">
+                      <a href="https://prima-med.org" target="_blank" rel="noopener">
+                        <span class="node-label">PRIMA</span>
+                      </a>
+                    </div>
+                    <div class="tree-node tree-node-tertiary">
+                      <a href="https://interregnextmed.eu" target="_blank" rel="noopener">
+                        <span class="node-label">Interreg NEXT MED</span>
+                      </a>
+                    </div>
+                    <div class="tree-node tree-node-tertiary">
+                      <a href="https://www.drosos.org" target="_blank" rel="noopener">
+                        <span class="node-label">DROSOS</span>
+                      </a>
+                    </div>
+                    <div class="tree-node tree-node-tertiary">
+                      <a href="https://www.porticus.com" target="_blank" rel="noopener">
+                        <span class="node-label">Porticus</span>
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <!-- Level 4: 4 cards (remaining) -->
+                  <div class="tree-level tree-level-4">
+                    <div class="tree-node tree-node-tertiary">
+                      <a href="https://neareast.org" target="_blank" rel="noopener">
+                        <span class="node-label">NEF</span>
+                      </a>
+                    </div>
+                    <div class="tree-node tree-node-tertiary">
+                      <a href="https://www.state.gov/population-refugees-and-migration" target="_blank" rel="noopener">
+                        <span class="node-label">BPRM</span>
+                      </a>
+                    </div>
+                    <div class="tree-node tree-node-tertiary">
+                      <a href="https://www.concern.net" target="_blank" rel="noopener">
+                        <span class="node-label">Concern Worldwide</span>
+                      </a>
+                    </div>
+                    <div class="tree-node tree-node-tertiary">
+                      <a href="https://www.khalifaaward.ae" target="_blank" rel="noopener">
+                        <span class="node-label">Khalifa Award</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div class="partner-category">
-              <h4>AUB & Regional Partners</h4>
-              <div class="logo-grid">
-                <div class="logo-tile"><a href="https://www.ruaf.org" target="_blank" rel="noopener"><span>RUAF Foundation</span></a></div>
-                <div class="logo-tile"><a href="https://www.evalmena.org" target="_blank" rel="noopener"><span>EvalMENA</span></a></div>
-                <div class="logo-tile"><a href="https://www.karianet.org" target="_blank" rel="noopener"><span>KariaNet</span></a></div>
-                <div class="logo-tile"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>EcoMENA</span></a></div>
-                <div class="logo-tile"><a href="https://www.aub.edu.lb/ncc" target="_blank" rel="noopener"><span>Nature Conservation Center</span></a></div>
-                <div class="logo-tile"><a href="https://www.aub.edu.lb/registrar/catalog/174" target="_blank" rel="noopener"><span>LDEM-AUB</span></a></div>
-                <div class="logo-tile"><a href="https://www.aub.edu.lb/ifi" target="_blank" rel="noopener"><span>IFI-AUB</span></a></div>
-                <div class="logo-tile"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>Neighborhood Initiative</span></a></div>
-                <div class="logo-tile"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>AUB President's Club</span></a></div>
-              </div>
-            </div>
-            
-            <div class="partner-category">
-              <h4>Local & Regional NGOs</h4>
-              <div class="logo-grid">
-                <div class="logo-tile"><a href="https://www.llwb.org" target="_blank" rel="noopener"><span>LLWB</span></a></div>
-                <div class="logo-tile"><a href="https://www.farahfoundation.org" target="_blank" rel="noopener"><span>FARAH Foundation</span></a></div>
-                <div class="logo-tile"><a href="https://www.agriculture.gov.lb" target="_blank" rel="noopener"><span>Lebanese Ministries</span></a></div>
-                <div class="logo-tile"><a href="https://www.cooperationwithoutborders.com" target="_blank" rel="noopener"><span>Cooperation Without Borders</span></a></div>
-              </div>
-            </div>
-            
-            <div class="partner-category">
-              <h4>Sister Organizations</h4>
-              <div class="logo-grid">
-                <div class="logo-tile"><a href="https://food-heritage.org" target="_blank" rel="noopener"><span>Food Heritage Foundation</span></a></div>
-                <div class="logo-tile"><a href="https://www.ardiardak.org" target="_blank" rel="noopener"><span>Ardi Ardak</span></a></div>
-                <div class="logo-tile"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>Eco-Khalleh</span></a></div>
-                <div class="logo-tile"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>Animal Encounter</span></a></div>
+            <div class="partner-category ecosystem-category">
+              <h4>ESDU Ecosystem</h4>
+              <div class="chaotic-grid">
+                <div class="chaotic-card" data-delay="0.1"><a href="https://www.evalmena.org" target="_blank" rel="noopener"><span>EvalMENA</span></a></div>
+                <div class="chaotic-card" data-delay="0.2"><a href="https://www.karianet.org" target="_blank" rel="noopener"><span>KariaNet</span></a></div>
+                <div class="chaotic-card" data-delay="0.3"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>EcoMENA</span></a></div>
+                <div class="chaotic-card" data-delay="0.4"><a href="https://www.aub.edu.lb/ncc" target="_blank" rel="noopener"><span>Nature Conservation Center</span></a></div>
+                <div class="chaotic-card" data-delay="0.5"><a href="https://www.aub.edu.lb/registrar/catalog/174" target="_blank" rel="noopener"><span>LDEM-AUB</span></a></div>
+                <div class="chaotic-card" data-delay="0.6"><a href="https://www.aub.edu.lb/ifi" target="_blank" rel="noopener"><span>IFI-AUB</span></a></div>
+                <div class="chaotic-card" data-delay="0.7"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>Neighborhood Initiative</span></a></div>
+                <div class="chaotic-card" data-delay="0.8"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>AUB President's Club</span></a></div>
+                <div class="chaotic-card" data-delay="0.9"><a href="https://www.llwb.org" target="_blank" rel="noopener"><span>LLWB</span></a></div>
+                <div class="chaotic-card" data-delay="1.0"><a href="https://www.farahfoundation.org" target="_blank" rel="noopener"><span>FARAH Foundation</span></a></div>
+                <div class="chaotic-card" data-delay="1.1"><a href="https://www.agriculture.gov.lb" target="_blank" rel="noopener"><span>Lebanese Ministries</span></a></div>
+                <div class="chaotic-card" data-delay="1.2"><a href="https://www.cooperationwithoutborders.com" target="_blank" rel="noopener"><span>Cooperation Without Borders</span></a></div>
+                <div class="chaotic-card" data-delay="1.3"><a href="https://food-heritage.org" target="_blank" rel="noopener"><span>Food Heritage Foundation</span></a></div>
+                <div class="chaotic-card" data-delay="1.4"><a href="https://www.ardiardak.org" target="_blank" rel="noopener"><span>Ardi Ardak</span></a></div>
+                <div class="chaotic-card" data-delay="1.5"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>Eco-Khalleh</span></a></div>
+                <div class="chaotic-card" data-delay="1.6"><a href="https://www.aub.edu.lb" target="_blank" rel="noopener"><span>Animal Encounter</span></a></div>
               </div>
             </div>
           </div>

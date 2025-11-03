@@ -11,6 +11,16 @@ ready(() => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Header shrink on scroll
+  const header = document.querySelector('.site-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+
   // Mobile nav toggle
   const nav = document.querySelector('.site-nav');
   const toggle = document.querySelector('.nav-toggle');
@@ -22,11 +32,24 @@ ready(() => {
     });
   }
 
-  // Reveal on scroll
+  // Enhanced reveal on scroll for all animated elements
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
-  document.querySelectorAll('[data-reveal], .kpi, .card, .slide, .goal-card, .initiative-item').forEach(el => io.observe(el));
+  document.querySelectorAll('[data-reveal], .kpi, .card, .slide, .goal-card, .initiative-item, .mvv .card, .hero-ctas .btn').forEach(el => io.observe(el));
+  
+  // Additional observers for sections and map
+  const sectionIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible-fade-up'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.section, .map-stage, .timeline .year, .kotl-card, .logo-tile').forEach(el => sectionIo.observe(el));
+  
+  // Footer observer
+  const footerIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.3 });
+  const footer = document.querySelector('.site-footer');
+  if (footer) footerIo.observe(footer);
 
   // Mission/Vision/Values – slider controls (mobile)
   const slider = document.querySelector('.mvv .card-slider');
@@ -170,6 +193,12 @@ ready(() => {
       ti = (ti + 1) % items.length;
       setActive(ti);
     }, 2600);
+    
+    // Observe timeline items for animations after they're created
+    setTimeout(() => {
+      const years = timeline.querySelectorAll('.year');
+      years.forEach(year => sectionIo.observe(year));
+    }, 100);
   }
 
   // Impact counters
