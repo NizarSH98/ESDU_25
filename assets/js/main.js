@@ -36,7 +36,7 @@ ready(() => {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
-  document.querySelectorAll('[data-reveal], .kpi, .card, .slide, .goal-card, .initiative-item, .mvv .card, .hero-ctas .btn').forEach(el => io.observe(el));
+  document.querySelectorAll('[data-reveal], .kpi, .card, .slide, .goal-card, .initiative-item, .mvv .card, .hero-ctas .btn, .ecosystem-card').forEach(el => io.observe(el));
   
   // Additional observers for sections and map
   const sectionIo = new IntersectionObserver((entries) => {
