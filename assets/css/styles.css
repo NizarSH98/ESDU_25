@@ -196,11 +196,12 @@ a:hover { text-decoration: underline; }
 @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } .hero-visual { order: -1; } }
 
 /* Mission/Vision/Values slider */
-.mvv .card-slider { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.mvv .card { background: linear-gradient(180deg, var(--card), var(--tint-rose)); border: 1px solid var(--line); border-radius: 1rem; padding: 1.25rem; box-shadow: var(--shadow); transition: transform .2s; }
+.mvv .card-slider { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; align-items: start; }
+.mvv .card { background: linear-gradient(180deg, var(--card), var(--tint-rose)); border: 1px solid var(--line); border-radius: 1rem; padding: 1.25rem; box-shadow: var(--shadow); transition: transform .2s; min-height: fit-content; }
 .mvv .card:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,.1); }
-.pill-list { display: flex; flex-wrap: wrap; gap: .5rem; margin: .5rem 0 0; padding: 0; list-style: none; }
-.pill-list li { background: linear-gradient(135deg, #fff0f4, #ffe8ed); color: var(--brand-ink); border: 1px solid #f5d2dc; padding: .45rem .8rem; border-radius: 999px; font-size: .9rem; line-height: 1.4; white-space: normal; }
+.mvv .card h3 { margin-bottom: 1rem; }
+.pill-list { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.pill-list li { background: linear-gradient(135deg, #fff0f4, #ffe8ed); color: var(--brand-ink); border: 1px solid #f5d2dc; padding: .4rem .75rem; border-radius: 999px; font-size: .85rem; line-height: 1.4; white-space: normal; flex: 0 1 auto; }
 .slider-controls { display: none; align-items: center; justify-content: center; gap: .5rem; margin-top: 1rem; }
 .slider-controls button { border: 1px solid var(--line); background: #fff; padding: .4rem .6rem; border-radius: .5rem; }
 .slider-dots { display: inline-flex; gap: .35rem; }
