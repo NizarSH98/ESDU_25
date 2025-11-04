@@ -257,6 +257,12 @@
   animation: cardPopIn 1s var(--anim-ease-bounce) 0.9s forwards;
 }
 
+.mvv .card-values {
+  opacity: 0;
+  transform: translateY(60px) scale(0.8) rotate(5deg);
+  animation: cardPopIn 1s var(--anim-ease-bounce) 0.9s forwards;
+}
+
 @keyframes cardPopIn {
   0% {
     opacity: 0;
@@ -283,6 +289,8 @@
 .pill-list li:nth-child(4) { animation: pillPopIn 0.8s var(--anim-ease-bounce) 1.6s forwards; }
 .pill-list li:nth-child(5) { animation: pillPopIn 0.8s var(--anim-ease-bounce) 1.8s forwards; }
 .pill-list li:nth-child(6) { animation: pillPopIn 0.8s var(--anim-ease-bounce) 2s forwards; }
+.pill-list li:nth-child(7) { animation: pillPopIn 0.8s var(--anim-ease-bounce) 2.2s forwards; }
+.pill-list li:nth-child(8) { animation: pillPopIn 0.8s var(--anim-ease-bounce) 2.4s forwards; }
 
 @keyframes pillPopIn {
   0% {
