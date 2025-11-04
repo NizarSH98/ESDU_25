@@ -36,7 +36,7 @@ ready(() => {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
-  document.querySelectorAll('[data-reveal], .kpi, .card, .slide, .goal-card, .initiative-item, .mvv .card, .hero-ctas .btn, .ecosystem-card').forEach(el => io.observe(el));
+  document.querySelectorAll('[data-reveal], .kpi, .card, .slide, .goal-card, .initiative-item, .mvv .card, .hero-ctas .btn, .ecosystem-card, .donor-card').forEach(el => io.observe(el));
   
   // Additional observers for sections and map
   const sectionIo = new IntersectionObserver((entries) => {
@@ -228,6 +228,7 @@ ready(() => {
   // ESDU Outreach Map with Leaflet and Carto Light
   const mapContainer = document.getElementById('esdu-map-container');
   const tabLocal = document.getElementById('tab-local');
+  const tabRegional = document.getElementById('tab-regional');
   const tabGlobal = document.getElementById('tab-global');
   
   if (mapContainer && window.L) {
@@ -235,8 +236,13 @@ ready(() => {
     const map = L.map('esdu-map-container', {
       zoomControl: true,
       attributionControl: true,
-      scrollWheelZoom: false
-    }).setView([33.897, 35.478], 6); // Start at Lebanon view
+      scrollWheelZoom: true,
+      doubleClickZoom: true,
+      boxZoom: true,
+      keyboard: true,
+      touchZoom: true,
+      dragging: true
+    }).setView([33.897, 35.478], 8); // Start at Lebanon view
 
     // Add Carto Light basemap
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -245,21 +251,22 @@ ready(() => {
       maxZoom: 20
     }).addTo(map);
 
-    // Disable map interaction when not hovering
-    mapContainer.addEventListener('mouseenter', () => { 
-      map.dragging.enable();
-      map.scrollWheelZoom.enable();
-    });
-    mapContainer.addEventListener('mouseleave', () => { 
-      map.dragging.disable();
-      map.scrollWheelZoom.disable();
-    });
-
     // Use esduLocations data from imported script
-    // Initialize data structure
+    // Filter out RUAF-related locations
+    function filterRUAF(locations) {
+      if (!locations) return [];
+      return locations.filter(loc => {
+        const str = JSON.stringify(loc).toLowerCase();
+        return !str.includes('ruaf');
+      });
+    }
+    
+    // Initialize data structure with RUAF locations filtered out
     let esduData = { 
       hub: typeof esduLocations !== 'undefined' ? esduLocations.hub : null, 
-      nodes: typeof esduLocations !== 'undefined' ? [...esduLocations.local, ...esduLocations.global] : [] 
+      local: typeof esduLocations !== 'undefined' ? filterRUAF(esduLocations.local) : [],
+      regional: typeof esduLocations !== 'undefined' ? filterRUAF(esduLocations.regional) : [],
+      global: typeof esduLocations !== 'undefined' ? filterRUAF(esduLocations.global) : []
     };
 
     // Render outreach map with connections
@@ -290,12 +297,16 @@ ready(() => {
       );
       hubMarker.addTo(map);
 
-      // Add node markers and connections
+      // Store markers and connections for animation
+      const markersAndConnections = [];
+      
+      // CRITICAL FIX: Create markers but DON'T add to map yet
+      // This prevents Leaflet from calculating positions before view is set
       data.nodes.forEach((node, index) => {
-        // Create node marker with animation
+        // Create node marker with wrapper div for animation (transform wrapper, not marker element)
         const nodeIcon = L.divIcon({
           className: 'esdu-node-marker',
-          html: `<div class="node-pulse"></div>`,
+          html: `<div class="marker-animation-wrapper" style="opacity: 0; transform: scale(0); transition: opacity 0.5s ease, transform 0.5s ease;"><div class="node-pulse"></div></div>`,
           iconSize: [16, 16],
           iconAnchor: [8, 8]
         });
@@ -314,7 +325,6 @@ ready(() => {
         popupContent += `</div>`;
         
         nodeMarker.bindPopup(popupContent);
-        nodeMarker.addTo(map);
 
         // Create bidirectional animated curved connection line with great circle arc
         const points = [];
@@ -350,46 +360,129 @@ ready(() => {
         const connectionLine = L.polyline(points, {
           color: '#840132',
           weight: 2,
-          opacity: 0.6,
+          opacity: 0,
           dashArray: '10, 10',
           className: 'animated-connection-line bidirectional'
         });
-        connectionLine.addTo(map);
         
-        // Add staggered delay to each line for wave effect
-        const delay = index * 0.3;
-        connectionLine.getElement().style.animationDelay = `${delay}s`;
+        // Store for animation - markers NOT added to map yet
+        markersAndConnections.push({
+          marker: nodeMarker,
+          connection: connectionLine,
+          node: node,
+          index: index
+        });
+      });
+      
+      // Calculate delay to fit all markers within 4 seconds max
+      const totalMarkers = markersAndConnections.length;
+      const maxAnimationTime = 4000; // 4 seconds in milliseconds
+      const minDelay = 50; // Minimum delay between markers (50ms for smooth sequential effect)
+      const maxDelay = totalMarkers > 1 ? Math.min(maxAnimationTime / (totalMarkers - 1), 200) : 0;
+      const delayPerMarker = Math.max(minDelay, maxDelay);
+      
+      // NOW add markers to map one by one with calculated delay - they're already properly positioned
+      markersAndConnections.forEach((item, index) => {
+        const delay = index * delayPerMarker;
+        
+        setTimeout(() => {
+          // Add marker to map - Leaflet will position it correctly NOW
+          item.marker.addTo(map);
+          
+          // Add connection line
+          item.connection.addTo(map);
+          
+          // Animate marker appearance using the wrapper div inside the icon
+          const markerElement = item.marker.getElement();
+          if (markerElement) {
+            const wrapper = markerElement.querySelector('.marker-animation-wrapper');
+            if (wrapper) {
+              // Trigger animation by changing wrapper styles
+              requestAnimationFrame(() => {
+                wrapper.style.opacity = '1';
+                wrapper.style.transform = 'scale(1)';
+              });
+            }
+          }
+          
+          // Show connection line with animation
+          const connectionElement = item.connection.getElement();
+          if (connectionElement) {
+            item.connection.setStyle({ opacity: 0.6 });
+            // Add staggered delay to each line for wave effect (existing animation)
+            const waveDelay = index * 0.3;
+            connectionElement.style.animationDelay = `${waveDelay}s`;
+          }
+        }, delay);
       });
     }
 
-    // Tab switching for local/global views
+    // Tab switching for local/regional/global views
     let currentView = 'local';
     
     function switchView(view) {
       currentView = view;
       
       // Filter nodes based on view
-      const filteredNodes = esduData.nodes.filter(node => node.type === view);
+      let filteredNodes = [];
+      if (view === 'local') {
+        filteredNodes = esduData.local;
+      } else if (view === 'regional') {
+        filteredNodes = esduData.regional;
+      } else if (view === 'global') {
+        filteredNodes = esduData.global;
+      }
       const filteredData = { hub: esduData.hub, nodes: filteredNodes };
       
       // Update UI
       tabLocal.setAttribute('aria-selected', view === 'local');
+      tabRegional.setAttribute('aria-selected', view === 'regional');
       tabGlobal.setAttribute('aria-selected', view === 'global');
       
-      // Re-render map with filtered data
-      renderOutreachMap(map, filteredData);
+      // CRITICAL: Set map view FIRST before rendering markers
+      // This ensures markers are positioned correctly from the start
+      const setViewAndRender = () => {
+        if (view === 'local') {
+          // Local view: Show only Lebanon
+          map.setView([33.897, 35.478], 8, { animate: false }); // No animation to ensure immediate positioning
+        } else if (view === 'regional') {
+          // Regional view: Show MENA region
+          if (filteredNodes.length > 0) {
+            const bounds = L.latLngBounds([esduData.hub.lat, esduData.hub.lon]);
+            filteredNodes.forEach(node => {
+              bounds.extend([node.lat, node.lon]);
+            });
+            map.fitBounds(bounds, { padding: [80, 80], maxZoom: 5, animate: false });
+          } else {
+            // Default MENA view if no nodes
+            map.setView([28.0, 35.0], 5, { animate: false });
+          }
+        } else if (view === 'global') {
+          // Global view: Show world map with all global connections
+          if (filteredNodes.length > 0) {
+            const bounds = L.latLngBounds([esduData.hub.lat, esduData.hub.lon]);
+            filteredNodes.forEach(node => {
+              bounds.extend([node.lat, node.lon]);
+            });
+            map.fitBounds(bounds, { padding: [90, 90], maxZoom: 2, animate: false });
+          } else {
+            // Default world view
+            map.setView([20.0, 0.0], 2, { animate: false });
+          }
+        }
+        
+        // Wait for map to update, then render markers
+        setTimeout(() => {
+          map.invalidateSize();
+          renderOutreachMap(map, filteredData);
+        }, 10);
+      };
       
-      // Adjust zoom and pan
-      if (filteredNodes.length > 0) {
-        const bounds = L.latLngBounds([esduData.hub.lat, esduData.hub.lon]);
-        filteredNodes.forEach(node => {
-          bounds.extend([node.lat, node.lon]);
-        });
-        map.fitBounds(bounds, { padding: [50, 50], maxZoom: view === 'local' ? 8 : 4 });
-      }
+      setViewAndRender();
     }
 
     tabLocal.addEventListener('click', () => switchView('local'));
+    tabRegional.addEventListener('click', () => switchView('regional'));
     tabGlobal.addEventListener('click', () => switchView('global'));
     
   // Initial render
